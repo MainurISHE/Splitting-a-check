@@ -17,7 +17,7 @@ export class BillStoreService {
     for (const item of this.items()) {
       for (const assignment of item.assignments) {
         totals[assignment.participantId] =
-          (totals[assignment.participantId] ?? 0) + assignment.share * item.price;
+          (totals[assignment.participantId] ?? 0) + (assignment.share / 100) * item.price;
       }
     }
     return totals;

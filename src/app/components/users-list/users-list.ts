@@ -16,7 +16,7 @@ export class UsersList {
 
   handleAdd() {
     if (!this.newUserName().trim()) {
-      return console.log('User name cannot be empty');
+      return alert('User name cannot be empty');
     }
     this.add.emit(this.newUserName());
     this.newUserName.set('');

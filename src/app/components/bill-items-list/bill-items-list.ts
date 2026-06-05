@@ -24,10 +24,10 @@ export class BillItemsList {
 
   handleAdd() {
     if (!this.newItemTitle().trim()) {
-      return console.log('Item title cannot be empty');
+      return alert('Item title cannot be empty');
     }
     if (this.newItemPrice() <= 0) {
-      return console.log('Item price must be greater than zero');
+      return alert('Item price must be greater than zero');
     }
     this.add.emit({
       title: this.newItemTitle(),
