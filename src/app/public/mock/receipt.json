@@ -1,0 +1,29 @@
+{
+  "participants": [
+    {
+      "id": "1",
+      "name": "David"
+    },
+    {
+      "id": "2",
+      "name": "Arina"
+    }
+  ],
+  "items": [
+    {
+      "id": "1",
+      "title": "Pizza",
+      "price": 150,
+      "assignments": [
+        {
+          "participantId": "1",
+          "share": 0.5
+        },
+        {
+          "participantId": "2",
+          "share": 0.5
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<p>Price: ${{ item().price }}</p>
+
+<div class="total-card">
+  @for (participant of participants(); track participant.id) {
+
+    <div class="total-list">
+      <p>{{ participant.name }}</p>
+
+      <input
+        type="number"
+        [value]="getShare(participant.id)"
+        (input)="handleShareChange(participant.id, +$any($event.target).value)"
+        placeholder="0.5 for 50%"
+        min="0"
+        max="1"
+      />
+    </div>
+  }
+</div>

@@ -1,0 +1,23 @@
+<div class="users-list">
+  <input
+    type="text"
+    [value]="newUserName()"
+    (input)="newUserName.set($any($event.target).value)"
+    placeholder="New user name"
+  />
+
+<button (click)="handleAdd()">
+  Add
+</button>
+
+@if (!participants().length) {
+    <h3>No users found.</h3>
+}
+
+@for (participant of participants(); track participant.id) {
+    <div class="user-card">
+        <p>{{ participant.name }}</p>
+
+        <button (click)="remove.emit(participant.id)">Remove</button>
+    </div>
+}

@@ -1,0 +1,32 @@
+<div class="items-list">
+  <h3>Bill Items</h3>
+
+  <input
+    type="text"
+    [value]="newItemTitle()"
+    (input)="newItemTitle.set($any($event.target).value)"
+    placeholder="Item name"
+  />
+
+  <input
+    type="number"
+    [value]="newItemPrice()"
+    (input)="newItemPrice.set(parsePrice($any($event.target).value))"
+    placeholder="Item price"
+  />
+
+  <button (click)="handleAdd()">Add Item</button>
+
+  @if (!items().length) {
+    <h3>No items added yet.</h3>
+  }
+
+  @for (item of items(); track item.id) {
+    <div class="item-card">
+      <p>{{ item.title }}</p>
+      <p>${{ item.price }}</p>
+
+      <button (click)="handleRemove(item.id)">Remove</button>
+    </div>
+  }
+</div>

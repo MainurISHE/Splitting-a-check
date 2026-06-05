@@ -1,0 +1,36 @@
+<div class="page">
+  <app-users-list
+    [participants]="store.participants()"
+    (add)="store.addParticipant($event)"
+    (remove)="store.removeParticipant($event)"
+  />
+
+  <app-bill-items-list
+    [items]="store.items()"
+    (add)="store.addItem($event)"
+    (remove)="store.removeItem($event)"
+  />
+
+  @for (item of store.items(); track item.id) {
+    <app-item-assignment
+      [item]="item"
+      [participants]="store.participants()"
+      (updateAssignment)="store.updateAssignment($event.itemId, $event.participantId, $event.share)"
+    />
+  }
+
+  <h3>Total: ${{ store.total() }}</h3>
+
+  @if (!store.participants().length) {
+    <p>Please add participants to split the bill.</p>
+  }
+
+  @for (participant of store.participants(); track participant.id) {
+    <div>
+      <p>
+        {{ participant.name }}
+        ${{ store.participantTotals()[participant.id] }}
+      </p>
+    </div>
+  }
+</div>
